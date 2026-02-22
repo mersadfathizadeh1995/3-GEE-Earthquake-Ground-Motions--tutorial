@@ -1,0 +1,787 @@
+Earthquake Ground Motions
+Kramer 1996
+1
+Clinton M. Wood1, PhD PE
+1Department of Civil Engineering, The University of Arkansas, Fayetteville, USA.
+Earthquake Ground Motions
+2
+From Kramer (1996)
+One of the Primary Goals of Geotechnical Earthquake 
+Engineers is to Predict:
+• Intensity (Amplitude) 
+• Frequency Content 
+• Duration
+for seismic ground motions from the 
+fault source to the site of interest.
+Earthquake Ground Motions
+3
+What Parameters effect Intensity, Frequency Content, and 
+Duration?
+• Earthquake Magnitude 
+• Distance from the fault (near fault effects)
+• Site Conditions (local, near surface)
+• Fault type/tectonic setting
+• Travel Path Geology (Deep in the earth) (Eastern vs 
+Western Rock)
+• Special Effects
+• Directivity, basin/topographic
+With every Earthquake our database of recorded 
+ground motions increases. This helps us further 
+understand how the parameter listed above affect 
+ground motions.
+Most earthquake ground motions are presently 
+recorded with accelerometers.
+Small amplitude ground motions may be 
+recorded using velocity meters.
+Earthquake Ground Motions
+4
+Ground Motion Recording Network
+Earthquake Ground Motions
+5
+Earthquake Ground Motions
+PGA
+P wave 
+Arrival
+Noise
+S wave 
+Arrival
+Surface wave 
+Arrival
+Accel
+(g)
+Primarily surface waves lower 
+frequency easier to see in vel or disp
+time (s)
+As recordings are made further from Earthquake epicenter
+•
+Intensity: Peak Ground Acceleration (PGA) decreases (attenuate) 
+•
+P, S waves: separate more at distance 2*thickness of the crust (~50 
+miles) Surface wave amplitudes produce peak GM’s at larger distances.
+•
+Frequency content: As distance increases, high 
+frequencies attenuate (because the earth is a low pass 
+filter and as distance increases high frequencies will 
+damp out)
+•
+Duration: As distance increases, duration increases
+Earthquake Ground Motions
+6
+Earthquake Ground Motions
+1. Intensity (amplitude)
+•
+Generally, measure motions in 3 orthogonal directions (Vert, N-S, 
+E-W). Can transform to fault parallel, fault horizontal.
+•
+The basic form is the ground motions are time histories (time 
+versus acceleration).
+•
+Often directly measure acceleration for strong ground motion and 
+integrate to get velocity and displacement. 
+Accelerometer
+Seismometer 
+(Velocity Meter)
+Vert
+E-W
+N-S
+Earthquake Ground Motions
+7
+High 
+Intensity
+Lower 
+intensity
+Earthquake Ground Motions
+8
+High 
+Intensity
+Lower 
+intensity
+Earthquake Ground Motions
+9
+Earthquake Ground Motions
+1. Intensity (amplitude)
+•
+Engineers typically assume horizontals motions are more damaging than vertical 
+motions. Vertical motions can be important for rotating or sensitive equipment or 
+structures. 
+•
+Factors of safety against gravity-induced static vertical forces in buildings 
+usually provides adequate resistance to vertical forces during earthquakes
+𝑀𝑀𝑀𝑀𝑀𝑀 𝑉𝑉𝑉𝑉𝑉𝑉𝑉𝑉 𝐴𝐴𝐴𝐴𝐴𝐴𝐴𝐴𝐴𝐴𝑀𝑀𝑀𝑀𝑀𝑀=
+2
+3  𝑀𝑀𝑀𝑀𝑀𝑀 𝐻𝐻𝐻𝐻𝐻𝐻𝐻𝐻 𝐴𝐴𝐴𝐴𝐴𝐴𝐴𝐴𝐴𝐴 (𝑀𝑀𝑀𝑀𝑀𝑀) (old school of thought not 
+always true)
+ 
+Typically, V/H ratios are used to estimate the vertical spectrum. 
+Bozorgnia and Campbell (2004) is generally considered the standard for V/H ratios, 
+but newer approaches are available.
+ASCE 7-16 code addresses vertical ground motions.
+V/H can be very large (2-5 in certain frequency ranges) if large Horz ground motions 
+are expected.
+Earthquake Ground Motions
+10
+Earthquake Ground Motions
+11
+Earthquake Ground Motions
+1. Intensity (amplitude)
+•
+Main parameters used 
+•
+Peak Ground Acceleration (PGA) 
+•
+Most commonly used ground motion parameter
+•
+Largest value of horizontal acceleration, absolute
+•
+In general, as PGA goes up, damage goes up, but it is 
+dependent on building period. 
+•
+Peak Ground Velocity (PGV)
+•
+More accurate at intermediate frequencies since less 
+sensitive to high frequencies, may be a better indicator of 
+potential damage.
+•
+Peak Ground Displacement (PGD)
+•
+Typically associated with low frequency content, less 
+common since errors can occur during signal processing.
+Earthquake Ground Motions
+12
+Earthquake Ground Motions
+1. Intensity (amplitude)
+•
+Numerically integrate (Trapezoidal rule) the acceleration time history to 
+get Velocity and displacement time histories
+•
+“Loose” high frequency components when we move from ACC to Disp 
+and the amplitude of the low freq. will increase
+•
+Remember in frequency domain 𝐷𝐷=
+𝐴𝐴
+𝜔𝜔2 and V=
+𝐴𝐴
+𝜔𝜔 
+•
+Acceleration time histories are processed for:
+•
+Instrument response (calibration factors) must account for building 
+response if located in building
+•
+Ambient noise (filtering)
+•
+Conditions at triggering (baseline correction)
+In the time domain fit a function to acceleration record and subtract
+In frequency domain, apply high pass filter above ~ 0.1 Hz
+Landers Earthquake
+Earthquake Ground Motions
+13
+Earthquake Ground Motions
+1. Intensity (amplitude)
+•
+Local site condition affect intensity. 
+•
+Gilroy 1 (sandstone rock)
+•
+Gilroy 2 (540’ of soil)
+•
+Less than 1 mile apart
+Thick soil layers attenuate high 
+frequencies and amplify low 
+Frequencies.
+Duration increases on soil
+Rock
+Soil
+No 1
+No 2
+Rock
+540’ Soil
+1 mile
+Earthquake Ground Motions
+14
+Earthquake Ground Motions
+1. Intensity (amplitude)
+•
+What is the potential problem with just using PGA?
+Damage may be closely related to PGA in many cases, but 
+other cases repeated applications of high amplitude cycles 
+are more damaging
+For the Melendy Ranch recording station:
+The 1972 Stone Canyon Earthquake (M=4.6) and the 1967 
+Koyna Earthquake (M=6.5) have the same PGA, but the 
+Koyna record has many more cycles of high amplitude 
+than the Stone Canyon record.
+1972 Stone Canyon Earthquake (M=4.6) 
+1967 Koyna Earthquake (M=6.5) 
+Earthquake Ground Motions
+15
+Earthquake Ground Motions
+1. Intensity (amplitude)
+•
+Other measures of Intensity:
+•
+Arias Intensity
+•
+Takes into account the entire time history, 
+not just one value. 
+Velocity Units
+•
+Husid Plot (Ia versus time)
+•
+Can be used to define duration too.
+Earthquake Ground Motions
+16
+Earthquake Ground Motions
+2. Frequency Content
+•
+Fourier Amplitude Spectra (FAS)
+•
+Predominate Period (Tp)
+Thick soil layers attenuate high 
+frequencies and amplify low 
+Frequencies.
+Rock
+Soil
+No 1
+No 2
+Rock
+1 mile
+Tp
+Tp
+Earthquake Ground Motions
+17
+Earthquake Ground Motions
+2. Frequency Content
+•
+Response Spectrum
+•
+Response of SDOF systems with given damping
+•
+Input to response spectrum is the time domain 
+equivalent of the FAS
+•
+Generally, earthquake Frequencies are 0.2-20 Hz
+No 1
+No 2
+Rock
+1 mile
+Rock
+Soil
+Earthquake Ground Motions
+18
+Earthquake Ground Motions
+3. Duration
+•
+Number of cycles of loading 
+•
+Affects 
+•
+Degradation of stiffness and strength
+•
+Pore pressure build-up
+•
+Lower Amplitude and Longer Duration 
+     may produce more damage than 
+     Higher Amplitude and Shorter Duration
+Earthquake Ground Motions
+19
+Earthquake Ground Motions
+3. Duration
+•
+Bracketed Duration (exceed 0.05g)
+Gilroy No 1 (Rock) = 9.8 sec
+Gilroy No 2 (Soil) = 14.7 sec
+*problem: further locations may not have a duration.
+Earthquake Ground Motions
+20
+Earthquake Ground Motions
+3. Duration
+•
+Significant Duration 
+•
+Based on Arias Intensity
+•
+Defined as the time interval across which a 
+specified amount of energy is dissipated.
+•
+Two common measures of significant duration 
+are time intervals between 5-75% and 5-95%
+Ia
+Husid Plot
+Earthquake Ground Motions
+21
+Earthquake Ground Motions
+Near Fault Effects
+•
+Near fault effects are for distances (R) < 10-20 km 
+from fault
+1.
+Rupture directivity: enhanced long-period  energy 
+when fault ruptures toward the site (forward 
+directivity).
+•
+Fault rupture is like ripping a piece of cloth. The 
+rupture can initiate and rip either or both 
+directions. 
+•
+The fault ruptures propagates at a velocity 
+approximately equal to Vs (~ 3 km/sec)
+•
+Each rupture point is initiating shear waves that 
+radiate away from that point
+•
+All shear waves arrive at B at the same time 
+producing a high amplitude, short duration pulse 
+(Forward Directivity)
+•
+S-waves arrive at A all spread out producing a 
+low amplitude, long duration pulse     
+(Backward Directivity)
+A
+B
+A
+B
+Earthquake Ground Motions
+22
+Earthquake Ground Motions
+Near Fault Effects
+Somerville et al. (1997)
+1992 Landers Earthquake (Mw = 7.3) Southern 
+Cal. 
+(Lucerne vs Joshua Tree record.)
+•
+Forward Directivity
+•
+Large 2-sided Velocity Pulse
+•
+Increased Low Frequency Content 
+(Long Period)
+•
+Short Duration Pulse
+•
+Manifests primarily in the Fault 
+Normal direction due to radiation 
+pattern of S-wave
+MHA  
+0.76g
+4.5 km from 
+epicenter 
+1 km from 
+rupture
+MHA  
+0.284g
+Rupture
+Direction
+Forward rupture directivity effects occur when two conditions are met: the rupture front propagates toward the site, and 
+the direction of slip on the fault is aligned with the site. The conditions for generating forward rupture directivity effects 
+are readily met in strike-slip faulting, where the fault slip direction is oriented horizontally in the direction along the 
+strike of the fault, and rupture propagates horizontally along strike either unilaterally or bilaterally. However, not all 
+near-fault locations experience forward rupture directivity effects in a given event. Backward directivity effects, which 
+occur when the rupture propagates away from the site, give rise to the opposite effect: long duration motions having low 
+amplitudes at long periods, as shown in Figures 1 and 3. A qualitative description of these effects was presented by 
+Archuleta and Hartzell (1981) using data from the 1979 Imperial Valley earthquake.
+The conditions required for forward directivity are also met in 
+dip-slip faulting, including both reverse and normal faults. The 
+alignment of both the rupture direction and the slip direction 
+up the fault plane produces rupture directivity effects at sites 
+located around the surface exposure of the fault (or its updip 
+projection if it does not break the surface).
+Earthquake Ground Motions
+23
+Earthquake Ground Motions
+Near Fault Effects
+Somerville et al. (1997)
+1992 Landers Earthquake (Mw = 7.3) Southern Cal. 
+(Lucerne vs Joshua Tree record.)
+•
+Forward Directivity
+•
+Large 2-sided Velocity Pulse
+•
+Increased Low Frequency Content (Long Period)
+•
+Short Duration Pulse
+•
+Manifests primarily in the Fault Normal direction due to radiation 
+pattern of S-wave
+2-sided 
+vel pulse
+Rupture 
+direction
+Earthquake Ground Motions
+24
+Earthquake Ground Motions
+Near Fault Effects
+Somerville et al. (1997)
+1992 Landers Earthquake (Mw = 7.3) Southern Cal. 
+(Lucerne vs Joshua Tree record.)
+•
+Fling Step (R< 5 km)
+•
+Permanent ground fault displacement over a short 
+time
+•
+Caused by the 1-sided velocity pulse
+•
+For strike-slip fault, fling step occurs on the fault 
+parallel component
+1-sided 
+vel pulse
+Perm Disp
+Don’t see the permanent 
+displacement in Sd. 
+Remember Sd is relative 
+displacement
+Response Spectra
+Earthquake Ground Motions
+25
+Earthquake Ground Motions
+Near Fault Effects
+Shahi and Baker (2014)
+It is not easy to classify a motion as pulse or non-pulse (i.e., 
+containing directivity effects). 
+Shahi and Baker (2014) use the PGV classify ground 
+motions.
+(if PI >0 is pulse)
+Classifying motions as Pulse or non-pulse is important so 
+that ground motion modeling can include directive in the 
+design ground motions.
+Pulse like motion Examples from Baker (2007)
+Earthquake Ground Motions
+26
+Earthquake Ground Motions
+Near Fault Effects
+As required by many codes, near fault effects have to be 
+considered for sites within 9.5 miles of the surface projection 
+of an active fault capable of producing a Mw 7 or larger 
+event
+or 6.25 miles of the surface projection of an active fault 
+capable of producing a Mw 6 or larger event
+EXCEPTIONS:
+1. Faults with estimated slip rate along the fault less than
+0.04 in. (1 mm) per year shall not be considered.
+2. The surface projection shall not include portions of the
+fault at depths of 6.25 mi (10 km) or greater.
+The code does not explicitly account for near fault effects.
+Shahi and Baker (2014) provide a period-by-period multiplier for 
+SaRotD100/SaRotD50 to apply to the response spectra to adjust it from 
+the median to the dominate direction of motion. (Designed for 
+NGA West 2)
+Abrahamson (2000)
+Has additional factors
+That can be used for 
+Other GMPEs.
+Period (s)
+ln(SaRotD100
+/SaRotD50)
+SaRotD100/S
+aRotD50
+φ
+τ
+σtotal
+0.01
+0.176
+1.19
+0.08
+0.01
+0.08
+0.02
+0.175
+1.19
+0.08
+0.01
+0.08
+0.03
+0.172
+1.19
+0.08
+0.01
+0.08
+0.05
+0.171
+1.19
+0.08
+0.01
+0.08
+0.075
+0.172
+1.19
+0.08
+0.01
+0.08
+0.1
+0.172
+1.19
+0.08
+0.01
+0.08
+0.15
+0.182
+1.20
+0.08
+0.01
+0.08
+0.2
+0.187
+1.21
+0.08
+0.01
+0.08
+0.25
+0.196
+1.22
+0.08
+0.01
+0.08
+0.3
+0.198
+1.22
+0.08
+0.01
+0.08
+0.4
+0.206
+1.23
+0.08
+0.01
+0.08
+0.5
+0.206
+1.23
+0.09
+0.01
+0.09
+0.75
+0.213
+1.24
+0.08
+0.01
+0.09
+1
+0.216
+1.24
+0.08
+0.01
+0.08
+1.5
+0.217
+1.24
+0.08
+0.01
+0.08
+2
+0.218
+1.24
+0.08
+0.01
+0.08
+3
+0.221
+1.25
+0.08
+0.01
+0.08
+4
+0.231
+1.26
+0.08
+0.01
+0.08
+5
+0.235
+1.26
+0.08
+0.02
+0.08
+7.5
+0.251
+1.28
+0.08
+0.02
+0.08
+10
+0.258
+1.29
+0.07
+0.03
+0.08
+Earthquake Ground Motions
+27
+Earthquake Ground Motions
+Topographic Effects
+Soil
+Rock
+Civita di Bagnoregio, Italy
+How does Topography influence earthquake ground motions?
+Would all of these “Rock Sites” experience the same GM during 
+an earthquake, all other things being equal?
+Earthquake Ground Motions
+28
+Earthquake Ground Motions
+Topographic Effects
+PGA = 1.78 g “one of the highest accelerations ever recorded” Spudich et al. 1996
+Hill Dimensions
+15-m high
+500-m long
+130-m wide
+21, 3-component geophones deployed to record aftershocks and investigate topographic amplification
+16 aftershocks analyzed
+Transverse Resonant Freq. 
+of Hill ~ 3.2 Hz
+Peak/Base Amp. Ratio ~ 4.5
+1994 Northridge EQ: Tarzana Station
+Earthquake Ground Motions
+29
+Earthquake Ground Motions
+Topographic Effects
+(1) The maximum amplification attributed to topography occurs at, or near, the peak of the 
+ridge, the maximum deamplification occurs near the toe (base) of the feature, and irregular 
+amplification-deamplification patterns are observed in between. 
+Max amp
+De-amp
+???
+(2) The observed, or computed, amplification is related to the “sharpness” of the topography: 
+the steeper the average slope, the higher the amplification. 
+Higher amp
+Lower amp
+(3) The amplifications are highly frequency-dependent and seem to occur at wavelengths (λ) 
+comparable to a characteristic length of the feature, such as width and/or height (Paolucci 
+2002, Ashford et al. 1997). 
+H
+W
+λ ~  W
+or
+λ ~  5*H
+V = f * λ
+or
+f  = V / λ
+Earthquake Ground Motions
+30
+Earthquake Ground Motions
+Topographic Effects
+(4) Amplifications of particle motion in the direction perpendicular to the direction of 
+elongation of the ridge seem to be larger than the motions parallel to the elongation 
+direction of the ridge. 
+Lower amp
+Higher amp
+(5) The vertical direction of particle motion seems to be affected far less, if any, by 
+topographic amplifications. 
+Little-to-no amp
+Earthquake Ground Motions
+31
+Earthquake Ground Motions
+Topographic Effects
+(6) Amplification factors determined from field observations can be significantly higher than 
+those determined by numerical simulations. 
+from D. Assimaki (after Geli et al. 1988)
+•
+Experimental Field Studies: 
+Topographic amplification factors ranging from 
+3 – 6 are common (e.g., Spudich et al. 1996; 
+Massa et al. 2010; Hough et al. 2011) with 
+some studies indicating values of 10-plus (e.g., 
+Beuch et al. 2010) 
+•
+Numerical Simulations:                   
+Qualitative agreement exists between 
+experimental data and 2D and 3D numerical 
+simulations .  However, numerical simulations 
+rarely predict topographic amplification factors 
+greater than 3, with common values less than 
+2 (e.g., Paolucci 2002; Papadimitriou 2011)
+Earthquake Ground Motions
+32
+Earthquake Ground Motions
+Topographic Effects
+Eurocode 8: Design of structures for earthquake resistance –
+Part 5: Foundations, retaining structures and geotechnical aspects
+Annex A (Informative): Topographic amplification factors (ST) 
+•
+For topography with H > 30 m… amplification factors range from 1.2 – 1.4
+•
+Considered independent of 
+fundamental period of vibration
+•
+A constant scaling factor to the elastic 
+design response spectrum
+Scaled 1.2 - 1.4 
+times for 
+topography
+Standard design RS
+This is not a good 
+way of accounting 
+for topographic 
+amplification since 
+the amplification is 
+under-estimated in 
+the hill resonant 
+range and over-
+estimated 
+everywhere else.
+Earthquake Ground Motions
+33
+Earthquake Ground Motions
+Topographic Effects
+My recommendations:
+Use the Paolucci 2002 approach to estimate the 
+topographic amplification frequency range. 
+Frequency = (0.7 to 1.0) (Vsavg/Length) for ridge 
+features.
+Can also use Ashford et al. (1997) estimate 
+ft0 = Vsavg/5.0*Height
+Amplifications of 2.5-3.25 times the flat ground 
+response are typical, but isolated or peninsula 
+type features can have amplification of 10 times.
+2011 Guralp CMG-40T 30 Sec
+2011 Trillium Compacts
+A
+C’
+C
+B’
+B
+A’
+NA
+NA
+8.50 
+1.50
+2.20
+1.60
+1.60
+3.25
+3.25
+1.30
+NA
+1.10
+1.70
+10.0
+4.30
+NA
+NA
+2.50
+2.60
+2.30
+1.50
+1.50
+3.00
+1.80
+NA
+N
+E
+Earthquake Ground Motions
+34
+Earthquake Ground Motions
+Basin Effects
+Seismic waves (Rayleigh waves) can be trapped in the 
+basin and therefore, longer duration and higher ground 
+motions (constructive interference) are observed
+Significant amplifications can occur near the edge of the 
+basin as Rayleigh wave strike and bounce off the edge of 
+the basin (i.e., impedance difference)
+We still don’t have a good enough understanding to capture 
+basin effects in edge and deep basins, but do ok with 
+shallow basins. (Mostly taken into effect with GMPE via 
+Z1.0 and Z2.5 terms along with Vs30 terms). 
+Rayleigh Waves
+Earthquake Ground Motions
+35
+Questions?

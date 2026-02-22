@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earthquake Ground Motions — Complete Learning Module</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+<button class="toc-toggle" id="tocBtn">☰</button>
+<aside class="sidebar" id="sidebar">
+<h3>📖 Table of Contents</h3>
+<ol class="toc-list" id="tocList"></ol>
+</aside>
+
+<div class="wrap">
+<main id="slides">
+
+<!-- ============== SLIDE 1: WELCOME ============== -->
+<section class="slide active" data-title="Welcome & Overview">
+<div class="tc">
+<h1 class="title">Earthquake Ground Motions</h1>
+<p class="sub">Complete Learning Module · Based on Kramer (1996)</p>
+<svg class="wave-svg" width="400" height="60" viewBox="0 0 400 60">
+<path d="M0 30 Q20 5,40 30 T80 30 T120 30 T160 30 T200 30 T240 30 T280 30 T320 30 T360 30 T400 30" fill="none" stroke="var(--primary)" stroke-width="3" class="wave-line"/>
+</svg>
+</div>
+<div class="card tip">
+<h3>🎯 Primary Goal of Geotech EQ Engineers</h3>
+<p>Predict three things for seismic ground motions traveling from the fault source to the site of interest:</p>
+<div class="g3 mt">
+<div class="card"><h4>1. Intensity</h4><p>How strong is the shaking? (Amplitude)</p></div>
+<div class="card"><h4>2. Frequency Content</h4><p>What frequencies dominate?</p></div>
+<div class="card"><h4>3. Duration</h4><p>How long does it last?</p></div>
+</div>
+</div>
+<div class="card">
+<h3>What Parameters Affect These?</h3>
+<ul>
+<li><strong>Earthquake Magnitude</strong> — bigger magnitude = more energy</li>
+<li><strong>Distance from fault</strong> — energy attenuates with distance</li>
+<li><strong>Site Conditions</strong> — local near-surface geology (soil vs rock)</li>
+<li><strong>Fault type / tectonic setting</strong> — strike-slip, reverse, normal</li>
+<li><strong>Travel Path Geology</strong> — deep earth (Eastern vs Western rock)</li>
+<li><strong>Special Effects</strong> — directivity, basin effects, topographic effects</li>
+</ul>
+<p class="mt sm">With every earthquake our database of recorded ground motions increases. Most strong ground motions are recorded with <strong>accelerometers</strong>. Small amplitude motions may be recorded using <strong>velocity meters (seismometers)</strong>.</p>
+</div>
+</section>
+
+<!-- ============== SLIDE 2: WAVE ARRIVALS & DISTANCE EFFECTS ============== -->
+<section class="slide" data-title="Wave Arrivals & Distance Effects">
+<h2 class="title tc">Wave Arrivals & Distance Effects</h2>
+<p class="sub tc">How Ground Motion Changes With Distance</p>
+<div class="card">
+<h3>Anatomy of an Accelerogram</h3>
+<p>A typical acceleration time history shows distinct wave arrivals:</p>
+<div class="g2 mt">
+<div>
+<div class="info-row"><span class="info-label">Noise</span><span class="info-val">Before P-wave arrival</span></div>
+<div class="info-row"><span class="info-label">P-wave arrival</span><span class="info-val">First, fastest, compressional</span></div>
+<div class="info-row"><span class="info-label">S-wave arrival</span><span class="info-val">Slower, shear wave, higher amplitude</span></div>
+<div class="info-row"><span class="info-label">Surface waves</span><span class="info-val">Lower frequency, dominant at large distances</span></div>
+<div class="info-row"><span class="info-label">PGA</span><span class="info-val">Peak Ground Acceleration (absolute max value)</span></div>
+</div>
+<div class="card formula">
+<p class="sm">Surface waves are lower frequency → easier to see in velocity or displacement records</p>
+</div>
+</div>
+</div>
+<div class="card warn">
+<h3>⚠️ What Happens as Distance Increases?</h3>
+<ul>
+<li><strong>Intensity:</strong> PGA decreases (attenuates) with distance</li>
+<li><strong>P & S waves:</strong> Separate more; at ~2× thickness of crust (~50 miles), surface waves amplitudes produce peak ground motions at larger distances</li>
+<li><strong>Frequency Content:</strong> High frequencies attenuate more because the <em>earth acts as a low-pass filter</em> — as distance increases, high frequencies damp out</li>
+<li><strong>Duration:</strong> As distance increases, duration <em>increases</em> (waves spread out)</li>
+</ul>
+</div>
+<div class="card tc">
+<h4>🧠 Quick Check</h4>
+<p>Why do high frequencies attenuate faster than low frequencies?</p>
+<div class="quiz-opts">
+<button class="qbtn" onclick="quiz(this,false,'q1')">Because high frequencies have longer wavelengths</button>
+<button class="qbtn" onclick="quiz(this,true,'q1')">Because the earth acts as a low-pass filter — shorter wavelengths scatter and absorb more easily</button>
+<button class="qbtn" onclick="quiz(this,false,'q1')">Because surface waves travel faster</button>
+</div>
+<div class="qfb" id="fb-q1"></div>
+</div>
+</section>
+
+<!-- ============== SLIDE 3: INTENSITY — MEASUREMENT ============== -->
+<section class="slide" data-title="Intensity: Measurement Basics">
+<h2 class="title tc">1. Intensity (Amplitude)</h2>
+<p class="sub tc">How We Measure Shaking Strength</p>
+<div class="card">
+<h3>Recording Ground Motions</h3>
+<ul>
+<li>Measure motions in <strong>3 orthogonal directions</strong>: Vertical, N-S, E-W</li>
+<li>Can transform to <strong>fault-parallel</strong> and <strong>fault-normal</strong> components</li>
+<li>Basic form: <strong>time histories</strong> (time vs. acceleration)</li>
+<li>For strong ground motion: directly measure <strong>acceleration</strong>, then integrate to get velocity and displacement</li>
+</ul>
+</div>
+<div class="card">
+<h3>Horizontal vs. Vertical Motions</h3>
+<ul>
+<li>Engineers typically assume <strong>horizontal motions are more damaging</strong> than vertical</li>
+<li>Vertical motions important for: rotating/sensitive equipment, certain structures</li>
+<li>Factors of safety against gravity-induced static vertical forces usually provide adequate resistance</li>
+</ul>
+<div class="eq">Max Vert Accel ≈ (2/3) × Max Horiz Accel (old rule of thumb — not always true!)</div>
+<details>
+<summary>More on V/H Ratios</summary>
+<ul>
+<li>V/H ratios are used to estimate the vertical spectrum</li>
+<li><strong>Bozorgnia and Campbell (2004)</strong> is the standard for V/H ratios</li>
+<li>ASCE 7-16 code addresses vertical ground motions</li>
+<li>V/H can be very large (<strong>2-5</strong>) in certain frequency ranges if large horizontal ground motions are expected</li>
+</ul>
+</details>
+</div>
+</section>
+
+<!-- ============== SLIDE 4: INTENSITY — PGA, PGV, PGD ============== -->
+<section class="slide" data-title="Intensity: PGA, PGV, PGD">
+<h2 class="title tc">Intensity Parameters</h2>
+<p class="sub tc">PGA · PGV · PGD · Arias Intensity</p>
+<div class="g2">
+<div class="card">
+<h3>Peak Ground Acceleration (PGA)</h3>
+<ul>
+<li><strong>Most commonly used</strong> ground motion parameter</li>
+<li>Largest absolute value of horizontal acceleration</li>
+<li>As PGA goes up, damage generally goes up</li>
+<li>But it is <strong>dependent on building period</strong></li>
+</ul>
+</div>
+<div class="card">
+<h3>Peak Ground Velocity (PGV)</h3>
+<ul>
+<li>More accurate at <strong>intermediate frequencies</strong></li>
+<li>Less sensitive to high frequencies</li>
+<li>May be a <strong>better indicator of potential damage</strong></li>
+</ul>
+</div>
+</div>
+<div class="g2">
+<div class="card">
+<h3>Peak Ground Displacement (PGD)</h3>
+<ul>
+<li>Associated with <strong>low-frequency</strong> content</li>
+<li>Less common — errors can occur during signal processing</li>
+</ul>
+</div>
+<div class="card formula">
+<h3>Integration Relationships</h3>
+<p>Numerically integrate (Trapezoidal rule) acceleration to get velocity & displacement:</p>
+<div class="eq">V = A / ω</div>
+<div class="eq">D = A / ω²</div>
+<p class="sm mt">When moving from Accel → Displacement, you <strong>lose high-frequency components</strong> and the amplitude of low frequencies increases.</p>
+</div>
+</div>
+<div class="card warn">
+<h3>⚠️ The Problem with Using Just PGA</h3>
+<p>Damage may be closely related to PGA in many cases, but <strong>repeated applications of high amplitude cycles are more damaging</strong>.</p>
+<p class="mt"><strong>Example (Melendy Ranch station):</strong></p>
+<div class="g2 mt">
+<div class="card">
+<div class="info-row"><span class="info-label">Event</span><span class="info-val">1972 Stone Canyon (M=4.6)</span></div>
+<div class="info-row"><span class="info-label">PGA</span><span class="info-val">Same as Koyna</span></div>
+<div class="info-row"><span class="info-label">Cycles</span><span class="info-val">Few high-amp cycles</span></div>
+</div>
+<div class="card">
+<div class="info-row"><span class="info-label">Event</span><span class="info-val">1967 Koyna (M=6.5)</span></div>
+<div class="info-row"><span class="info-label">PGA</span><span class="info-val">Same as Stone Canyon</span></div>
+<div class="info-row"><span class="info-label">Cycles</span><span class="info-val">Many more high-amp cycles → more damage!</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============== SLIDE 5: ARIAS INTENSITY & SIGNAL PROCESSING ============== -->
+<section class="slide" data-title="Arias Intensity & Processing">
+<h2 class="title tc">Arias Intensity & Signal Processing</h2>
+<p class="sub tc">Beyond Peak Values</p>
+<div class="g2">
+<div class="card formula">
+<h3>Arias Intensity (Ia)</h3>
+<p>Takes into account the <strong>entire time history</strong>, not just one peak value.</p>
+<div class="eq">Ia = (π / 2g) ∫₀ᵗᵈ [a(t)]² dt</div>
+<p class="sm mt">Units: velocity (m/s or cm/s)</p>
+<p class="mt"><strong>Husid Plot:</strong> Ia plotted versus time — shows how energy builds up. Also used to define duration!</p>
+</div>
+<div class="card">
+<h3>Signal Processing Steps</h3>
+<p>Raw acceleration time histories must be processed for:</p>
+<ul>
+<li><strong>Instrument response:</strong> calibration factors; must account for building response if sensor is in a building</li>
+<li><strong>Ambient noise:</strong> filtering out background noise</li>
+<li><strong>Baseline correction:</strong>
+  <ul style="list-style:disc;padding-left:1.5rem">
+    <li><em>Time domain:</em> fit a function to the acceleration record and subtract</li>
+    <li><em>Frequency domain:</em> apply high-pass filter above ~0.1 Hz</li>
+  </ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="card tc">
+<h4>🧠 Quick Check</h4>
+<p>Why is Arias Intensity often preferred over PGA for assessing liquefaction potential?</p>
+<div class="quiz-opts">
+<button class="qbtn" onclick="quiz(this,false,'q2')">Because Ia is always larger than PGA</button>
+<button class="qbtn" onclick="quiz(this,true,'q2')">Because Ia accounts for ALL cycles of motion (amplitude + duration), not just the single peak</button>
+<button class="qbtn" onclick="quiz(this,false,'q2')">Because Ia ignores low-frequency components</button>
+</div>
+<div class="qfb" id="fb-q2"></div>
+</div>
+</section>
+
+<!-- ============== SLIDE 6: LOCAL SITE EFFECTS ============== -->
+<section class="slide" data-title="Local Site Effects (Gilroy Example)">
+<h2 class="title tc">Local Site Effects on Intensity</h2>
+<p class="sub tc">The Gilroy 1 vs Gilroy 2 Example</p>
+<div class="card important">
+<h3>🔴 The Classic Gilroy Example</h3>
+<p>Two stations <strong>less than 1 mile apart</strong> during the 1989 Loma Prieta Earthquake recorded vastly different motions:</p>
+<div class="g2 mt">
+<div class="card">
+<h4>Gilroy #1 (Rock)</h4>
+<div class="info-row"><span class="info-label">Geology</span><span class="info-val">Sandstone Rock</span></div>
+<div class="info-row"><span class="info-label">High-freq content</span><span class="info-val">Higher</span></div>
+<div class="info-row"><span class="info-label">Low-freq content</span><span class="info-val">Lower</span></div>
+<div class="info-row"><span class="info-label">Duration</span><span class="info-val">Shorter</span></div>
+</div>
+<div class="card">
+<h4>Gilroy #2 (Soil)</h4>
+<div class="info-row"><span class="info-label">Geology</span><span class="info-val">540 feet of soil</span></div>
+<div class="info-row"><span class="info-label">High-freq content</span><span class="info-val">Attenuated by soil</span></div>
+<div class="info-row"><span class="info-label">Low-freq content</span><span class="info-val">Amplified by soil</span></div>
+<div class="info-row"><span class="info-label">Duration</span><span class="info-val">Longer</span></div>
+</div>
+</div>
+</div>
+<div class="card tip">
+<h3>Key Takeaway</h3>
+<p><strong>Thick soil layers attenuate high frequencies and amplify low frequencies. Duration increases on soil.</strong> This is why site conditions (Vs30) are critical inputs to GMPEs.</p>
+</div>
+</section>
+
+<!-- ============== SLIDE 7: FREQUENCY CONTENT ============== -->
+<section class="slide" data-title="Frequency Content: FAS & Response Spectra">
+<h2 class="title tc">2. Frequency Content</h2>
+<p class="sub tc">Fourier Spectra & Response Spectra</p>
+<div class="g2">
+<div class="card">
+<h3>Fourier Amplitude Spectra (FAS)</h3>
+<p>Decomposes the time history into its frequency components using the Fourier Transform.</p>
+<ul>
+<li>Shows <strong>amplitude vs. frequency</strong></li>
+<li><strong>Predominant Period (Tp):</strong> the period with the highest Fourier amplitude</li>
+<li>Rock sites → higher frequency content (shorter Tp)</li>
+<li>Soil sites → lower frequency content (longer Tp)</li>
+</ul>
+</div>
+<div class="card">
+<h3>Response Spectrum</h3>
+<p>Plot of maximum response of a family of <strong>SDOF oscillators</strong> with varying natural periods, for a given damping ratio (usually 5%).</p>
+<ul>
+<li>Input = the time-domain equivalent of the FAS</li>
+<li>General earthquake frequencies: <strong>0.2 – 20 Hz</strong></li>
+<li>Shows which building periods will experience the most shaking</li>
+</ul>
+<p class="mt sm">Rock sites show higher Sa at short periods; soil sites show higher Sa at longer periods.</p>
+</div>
+</div>
+<div class="card tc">
+<h3>Interactive Response Spectrum</h3>
+<div class="chart-box"><canvas id="rsChart"></canvas></div>
+<div style="display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap">
+<button class="btn bs" onclick="setRS('rock')">🪨 Rock Site</button>
+<button class="btn bs" onclick="setRS('soil')">🟤 Soil Site</button>
+<button class="btn bs" onclick="setRS('both')">📊 Compare Both</button>
+</div>
+</div>
+</section>
+
+<!-- ============== SLIDE 8: DURATION ============== -->
+<section class="slide" data-title="Duration: Bracketed & Significant">
+<h2 class="title tc">3. Duration</h2>
+<p class="sub tc">How Long Does Shaking Last?</p>
+<div class="card">
+<h3>Why Duration Matters</h3>
+<p>Number of cycles of loading affects:</p>
+<ul>
+<li><strong>Degradation of stiffness and strength</strong> in soils and structures</li>
+<li><strong>Pore pressure build-up</strong> → liquefaction risk!</li>
+</ul>
+<div class="eq">Lower Amplitude + Longer Duration may produce MORE damage than Higher Amplitude + Shorter Duration</div>
+</div>
+<div class="g2">
+<div class="card">
+<h3>Bracketed Duration</h3>
+<p>Time between the <strong>first and last</strong> exceedance of a threshold acceleration (typically 0.05g).</p>
+<div class="info-row"><span class="info-label">Gilroy #1 (Rock)</span><span class="info-val">9.8 sec</span></div>
+<div class="info-row"><span class="info-label">Gilroy #2 (Soil)</span><span class="info-val">14.7 sec</span></div>
+<p class="sm mt">⚠️ Problem: stations far from the source may never exceed the threshold, so duration = 0.</p>
+</div>
+<div class="card">
+<h3>Significant Duration</h3>
+<p>Based on <strong>Arias Intensity</strong>. Defined as the time interval across which a specified amount of energy is dissipated.</p>
+<ul>
+<li><strong>D₅₋₇₅:</strong> Time interval between 5% and 75% of total Ia (commonly used for structural)</li>
+<li><strong>D₅₋₉₅:</strong> Time interval between 5% and 95% of total Ia (commonly used for geotech)</li>
+</ul>
+<p class="sm mt">Read from the <strong>Husid Plot</strong> (Ia vs time).</p>
+</div>
+</div>
+<div class="card tc">
+<h4>🧠 Quick Check</h4>
+<p>A site 200 km from a M5.0 earthquake records PGA = 0.02g. What is the bracketed duration (threshold = 0.05g)?</p>
+<div class="quiz-opts">
+<button class="qbtn" onclick="quiz(this,true,'q3')">0 seconds — it never exceeds the 0.05g threshold</button>
+<button class="qbtn" onclick="quiz(this,false,'q3')">About 5 seconds</button>
+<button class="qbtn" onclick="quiz(this,false,'q3')">Cannot be determined</button>
+</div>
+<div class="qfb" id="fb-q3"></div>
+</div>
+</section>
+
+<!-- ============== SLIDE 9: NEAR FAULT — DIRECTIVITY ============== -->
+<section class="slide" data-title="Near-Fault Effects: Directivity">
+<h2 class="title tc">Near-Fault Effects</h2>
+<p class="sub tc">Rupture Directivity (R < 10-20 km)</p>
+<div class="card">
+<h3>Rupture Directivity Explained</h3>
+<p>Fault rupture is like <strong>ripping a piece of cloth</strong>. The rupture can initiate and rip either or both directions. The fault rupture propagates at a velocity ≈ Vs (~3 km/sec).</p>
+<p class="mt">Each rupture point initiates shear waves that radiate away from that point. What happens depends on the observer's position:</p>
+</div>
+<div class="g2">
+<div class="card tip">
+<h3>✅ Forward Directivity</h3>
+<p>Site is <strong>ahead</strong> of the rupture propagation direction.</p>
+<ul>
+<li>All S-waves <strong>arrive at the same time</strong></li>
+<li>Produces a <strong>high-amplitude, short-duration velocity pulse</strong></li>
+<li>Large <strong>2-sided velocity pulse</strong></li>
+<li>Increased <strong>low-frequency (long-period)</strong> content</li>
+<li>Manifests primarily in the <strong>fault-normal</strong> direction (due to radiation pattern of S-wave)</li>
+</ul>
+</div>
+<div class="card warn">
+<h3>⬅️ Backward Directivity</h3>
+<p>Site is <strong>behind</strong> the rupture propagation direction.</p>
+<ul>
+<li>S-waves arrive <strong>all spread out</strong></li>
+<li>Produces a <strong>low-amplitude, long-duration</strong> pulse</li>
+<li>Lower long-period content</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<h3>When Does Forward Directivity Occur?</h3>
+<p><strong>Two conditions</strong> must be met simultaneously:</p>
+<ol style="list-style:decimal;padding-left:1.5rem">
+<li>The rupture front propagates <strong>toward the site</strong></li>
+<li>The direction of slip on the fault is <strong>aligned with the site</strong></li>
+</ol>
+<p class="mt">These conditions are readily met in <strong>strike-slip faulting</strong> (horizontal slip along strike). Also met in <strong>dip-slip faulting</strong> (reverse and normal faults) — rupture direction and slip direction up the fault plane produce effects at sites near the surface exposure of the fault.</p>
+</div>
+<div class="card formula">
+<h3>1992 Landers Earthquake (Mw = 7.3) — Real Example</h3>
+<p>Lucerne station (forward directivity): <strong>MHA = 0.76g</strong>, 1 km from rupture</p>
+<p>Joshua Tree station (backward directivity): <strong>MHA = 0.284g</strong></p>
+<p class="sm mt">The Lucerne record shows a large 2-sided velocity pulse with increased long-period content and short duration pulse, primarily in the fault-normal direction.</p>
+</div>
+</section>
+
+<!-- ============== SLIDE 10: FLING STEP & PULSE CLASSIFICATION ============== -->
+<section class="slide" data-title="Fling Step & Pulse Classification">
+<h2 class="title tc">Fling Step & Pulse Classification</h2>
+<p class="sub tc">Permanent Displacement & Identifying Pulses</p>
+<div class="card important">
+<h3>Fling Step (R < 5 km)</h3>
+<ul>
+<li><strong>Permanent ground displacement</strong> over a short time due to fault offset</li>
+<li>Caused by a <strong>1-sided velocity pulse</strong></li>
+<li>For <strong>strike-slip</strong> faults → fling step is on the <strong>fault-parallel</strong> component</li>
+<li>For <strong>dip-slip</strong> faults → fling step is on the <strong>fault-normal</strong> component</li>
+</ul>
+<p class="mt sm">Important: You don't see permanent displacement in Sd (spectral displacement) because Sd is <strong>relative</strong> displacement.</p>
+</div>
+<div class="card">
+<h3>Pulse Classification — Shahi and Baker (2014)</h3>
+<p>It's not easy to classify a motion as pulse or non-pulse. Shahi and Baker (2014) use <strong>PGV</strong> to classify ground motions:</p>
+<div class="eq">If Pulse Indicator (PI) > 0 → motion is classified as a PULSE</div>
+<p class="mt">Classifying motions as pulse vs non-pulse is important so that ground motion modeling can <strong>include directivity effects</strong> in the design ground motions.</p>
+</div>
+<div class="card">
+<h3>Code Requirements for Near-Fault Effects</h3>
+<p>Must consider near-fault effects for sites within:</p>
+<ul>
+<li><strong>9.5 miles</strong> of active fault capable of Mw ≥ 7.0</li>
+<li><strong>6.25 miles</strong> of active fault capable of Mw ≥ 6.0</li>
+</ul>
+<p class="mt"><strong>Exceptions:</strong></p>
+<ul>
+<li>Faults with slip rate < 0.04 in (1 mm) per year → not considered</li>
+<li>Surface projection excludes fault portions at depths ≥ 6.25 mi (10 km)</li>
+</ul>
+<p class="mt sm">The code does not explicitly account for near-fault effects. Shahi and Baker (2014) provide period-by-period multipliers for <strong>SaRotD100/SaRotD50</strong> to adjust from median to dominant direction of motion (designed for NGA West 2). Abrahamson (2000) has additional factors for other GMPEs.</p>
+</div>
+</section>
+
+<!-- ============== SLIDE 11: SHAHI & BAKER TABLE ============== -->
+<section class="slide" data-title="RotD100/RotD50 Ratios Table">
+<h2 class="title tc">SaRotD100 / SaRotD50 Ratios</h2>
+<p class="sub tc">Shahi and Baker (2014) — Period-by-Period Multipliers</p>
+<div class="card">
+<h3>Why This Matters</h3>
+<p>NGA West 2 GMPEs predict <strong>SaRotD50</strong> (median component). To get the <strong>maximum direction</strong> of motion (SaRotD100), multiply by these factors:</p>
+<table>
+<thead><tr><th>Period (s)</th><th>ln(RotD100/RotD50)</th><th>RotD100/RotD50</th><th>φ</th><th>τ</th><th>σ_total</th></tr></thead>
+<tbody>
+<tr><td>0.01</td><td>0.176</td><td>1.19</td><td>0.08</td><td>0.01</td><td>0.08</td></tr>
+<tr><td>0.05</td><td>0.171</td><td>1.19</td><td>0.08</td><td>0.01</td><td>0.08</td></tr>
+<tr><td>0.1</td><td>0.172</td><td>1.19</td><td>0.08</td><td>0.01</td><td>0.08</td></tr>
+<tr><td>0.2</td><td>0.187</td><td>1.21</td><td>0.08</td><td>0.01</td><td>0.08</td></tr>
+<tr><td>0.5</td><td>0.206</td><td>1.23</td><td>0.09</td><td>0.01</td><td>0.09</td></tr>
+<tr><td>1.0</td><td>0.216</td><td>1.24</td><td>0.08</td><td>0.01</td><td>0.08</td></tr>
+<tr><td>2.0</td><td>0.218</td><td>1.24</td><td>0.08</td><td>0.01</td><td>0.08</td></tr>
+<tr><td>3.0</td><td>0.221</td><td>1.25</td><td>0.08</td><td>0.01</td><td>0.08</td></tr>
+<tr><td>5.0</td><td>0.235</td><td>1.26</td><td>0.08</td><td>0.02</td><td>0.08</td></tr>
+<tr><td>10.0</td><td>0.258</td><td>1.29</td><td>0.07</td><td>0.03</td><td>0.08</td></tr>
+</tbody>
+</table>
+<p class="sm mt">At short periods, ratio ≈ 1.19. At long periods (10s), ratio → 1.29. The uncertainty (φ, τ, σ) is relatively small and constant.</p>
+</div>
+<div class="card tc">
+<h3>Interactive: RotD100/RotD50 Ratio vs Period</h3>
+<div class="chart-box"><canvas id="rotdChart"></canvas></div>
+</div>
+</section>
+
+<!-- ============== SLIDE 12: TOPOGRAPHIC EFFECTS 1 ============== -->
+<section class="slide" data-title="Topographic Effects: Intro">
+<h2 class="title tc">Topographic Effects</h2>
+<p class="sub tc">How Hills & Ridges Amplify Ground Motion</p>
+<div class="card">
+<h3>The Question</h3>
+<p>Would all "Rock Sites" on a hillside experience the same ground motion during an earthquake, all other things being equal? <strong>Absolutely not!</strong></p>
+</div>
+<div class="card important">
+<h3>1994 Northridge Earthquake — Tarzana Station</h3>
+<div class="g2">
+<div>
+<p><strong>PGA = 1.78g</strong> — "one of the highest accelerations ever recorded" (Spudich et al. 1996)</p>
+<div class="info-row"><span class="info-label">Hill height</span><span class="info-val">15 m</span></div>
+<div class="info-row"><span class="info-label">Hill length</span><span class="info-val">500 m</span></div>
+<div class="info-row"><span class="info-label">Hill width</span><span class="info-val">130 m</span></div>
+</div>
+<div>
+<p>21 three-component geophones deployed; 16 aftershocks analyzed:</p>
+<div class="info-row"><span class="info-label">Transverse resonant freq</span><span class="info-val">~3.2 Hz</span></div>
+<div class="info-row"><span class="info-label">Peak/Base amp ratio</span><span class="info-val">~4.5</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============== SLIDE 13: TOPOGRAPHIC EFFECTS — 6 RULES ============== -->
+<section class="slide" data-title="6 Rules of Topographic Amplification">
+<h2 class="title tc">6 Rules of Topographic Amplification</h2>
+<p class="sub tc">Key Findings from Research</p>
+<div class="card"><h3>Rule 1</h3><p><strong>Max amplification</strong> occurs at or near the <strong>peak of the ridge</strong>. Max <strong>deamplification</strong> occurs near the <strong>toe (base)</strong>. Irregular patterns in between.</p></div>
+<div class="card"><h3>Rule 2</h3><p>Amplification is related to <strong>"sharpness"</strong> of the topography: the <strong>steeper the average slope → the higher the amplification</strong>.</p></div>
+<div class="card formula"><h3>Rule 3</h3><p>Amplifications are <strong>highly frequency-dependent</strong> and occur at wavelengths (λ) comparable to the feature's characteristic length:</p>
+<div class="eq">λ ≈ W (width)&nbsp;&nbsp;  or &nbsp;&nbsp; λ ≈ 5 × H (height)</div>
+<div class="eq">V = f × λ &nbsp;&nbsp;→&nbsp;&nbsp; f = V / λ</div>
+<p class="sm">(Paolucci 2002, Ashford et al. 1997)</p>
+</div>
+<div class="card"><h3>Rule 4</h3><p>Amplification in the direction <strong>perpendicular to the ridge elongation</strong> is <strong>larger</strong> than parallel.</p></div>
+<div class="card"><h3>Rule 5</h3><p>The <strong>vertical</strong> direction is affected <strong>far less</strong> by topographic amplification.</p></div>
+<div class="card warn"><h3>Rule 6</h3><p>Amplification factors from <strong>field observations are significantly higher</strong> than numerical simulations!</p>
+<div class="g2 mt">
+<div><div class="info-row"><span class="info-label">Field Studies</span><span class="info-val">Amp 3-6 common, up to 10+</span></div><p class="sm">Spudich 1996, Massa 2010, Hough 2011, Beuch 2010</p></div>
+<div><div class="info-row"><span class="info-label">Numerical Sims</span><span class="info-val">Amp rarely > 3, common < 2</span></div><p class="sm">Paolucci 2002, Papadimitriou 2011</p></div>
+</div>
+</div>
+</section>
+
+<!-- ============== SLIDE 14: TOPOGRAPHIC — CODES & PRACTICE ============== -->
+<section class="slide" data-title="Topo: Codes & Recommendations">
+<h2 class="title tc">Topographic Effects in Practice</h2>
+<p class="sub tc">Codes, Formulas & Recommendations</p>
+<div class="card">
+<h3>Eurocode 8 (Part 5, Annex A)</h3>
+<p>For topography with <strong>H > 30 m</strong>, amplification factors (S_T) range from <strong>1.2 – 1.4</strong>.</p>
+<ul>
+<li>Considered <strong>independent</strong> of fundamental period of vibration</li>
+<li>A constant scaling factor applied to the elastic design response spectrum</li>
+</ul>
+<p class="mt sm">⚠️ This is <strong>NOT a good approach</strong> because amplification is under-estimated in the hill resonant frequency range and over-estimated everywhere else.</p>
+</div>
+<div class="card tip">
+<h3>Professor Wood's Recommendations</h3>
+<p>Use the <strong>Paolucci (2002)</strong> approach to estimate the topographic amplification frequency range:</p>
+<div class="eq">f = (0.7 to 1.0) × (Vs_avg / Length) &nbsp;&nbsp; for ridge features</div>
+<p class="mt">Can also use <strong>Ashford et al. (1997)</strong>:</p>
+<div class="eq">f_t0 = Vs_avg / (5.0 × Height)</div>
+<ul class="mt">
+<li>Amplifications of <strong>2.5 - 3.25</strong> times flat ground response are typical</li>
+<li>Isolated or peninsula-type features can have amplification of <strong>10 times</strong>!</li>
+</ul>
+</div>
+</section>
+
+<!-- ============== SLIDE 15: BASIN EFFECTS ============== -->
+<section class="slide" data-title="Basin Effects">
+<h2 class="title tc">Basin Effects</h2>
+<p class="sub tc">Trapped Waves & Edge Effects</p>
+<div class="card">
+<h3>How Basins Affect Ground Motions</h3>
+<ul>
+<li>Seismic waves (<strong>Rayleigh waves</strong>) can be <strong>trapped in the basin</strong></li>
+<li>This leads to <strong>longer duration</strong> and <strong>higher ground motions</strong> (constructive interference)</li>
+<li>Significant amplifications occur near the <strong>edge of the basin</strong> as Rayleigh waves strike and bounce off (impedance difference)</li>
+</ul>
+</div>
+<div class="card warn">
+<h3>Current State of Knowledge</h3>
+<p>We still don't have a good enough understanding to capture basin effects in <strong>edge and deep basins</strong>, but do OK with <strong>shallow basins</strong>.</p>
+<p class="mt">Mostly accounted for in GMPEs via:</p>
+<div class="g3 mt">
+<div class="card tc"><h4>Z1.0</h4><p class="sm">Depth to Vs = 1.0 km/s</p></div>
+<div class="card tc"><h4>Z2.5</h4><p class="sm">Depth to Vs = 2.5 km/s</p></div>
+<div class="card tc"><h4>Vs30</h4><p class="sm">Avg shear wave vel, top 30m</p></div>
+</div>
+</div>
+</section>
+
+<!-- ============== SLIDE 16: GMPE OVERVIEW FOR HW ============== -->
+<section class="slide" data-title="GMPEs for Your Homework">
+<h2 class="title tc">GMPEs: Your Homework Guide</h2>
+<p class="sub tc">Attenuation Relationships for HW #3</p>
+<div class="card">
+<h3>What is a GMPE?</h3>
+<p>A Ground Motion Prediction Equation (formerly "attenuation relationship") is a mathematical model that predicts ground motion intensity (PGA, Sa, etc.) as a function of earthquake parameters.</p>
+<div class="eq">ln(Y) = f(Magnitude, Distance, Site, Fault Style, ...)</div>
+<p class="mt">The output is typically the <strong>median</strong> prediction. Adding ± σ (standard deviation) gives you the ± 1σ confidence bounds. For your HW, use only the median (ignore σ).</p>
+</div>
+<div class="card warn">
+<h3>⚠️ Critical: Distance Definitions</h3>
+<p>Different GMPEs use different distance metrics! This is crucial for Question 1:</p>
+<div class="g2 mt">
+<div class="card">
+<h4>Rupture Distance (R_rup)</h4>
+<p>Closest distance to the <strong>fault rupture plane</strong> (in 3D)</p>
+<p class="sm mt">Used by: Abrahamson & Silva 1997, Idriss 2008</p>
+</div>
+<div class="card">
+<h4>Joyner-Boore Distance (R_JB)</h4>
+<p>Shortest distance to the <strong>surface projection</strong> of the rupture</p>
+<p class="sm mt">Used by: Boore, Joyner & Fumal 1997</p>
+<p class="sm">⚠️ For HW: you must <strong>estimate R_JB</strong> since only R_rup is given!</p>
+</div>
+</div>
+</div>
+<div class="card">
+<h3>GMPEs You'll Use</h3>
+<table>
+<thead><tr><th>Question</th><th>GMPE(s)</th><th>What to Predict</th></tr></thead>
+<tbody>
+<tr><td>Q1</td><td>Abrahamson & Silva 1997, Idriss 2008, Boore et al. 1997</td><td>PGA at 8 rock stations</td></tr>
+<tr><td>Q2</td><td>A&S 1997, A&S 2008, NGA West 2</td><td>Full Response Spectrum at Pacoima Dam & Mt. Wilson</td></tr>
+<tr><td>Q3</td><td>NGA West 2, NGA East</td><td>Response Spectra at 10km & 100km for Mw=8.0</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ============== SLIDE 17: HW Q1 GUIDE ============== -->
+<section class="slide" data-title="HW Q1: PGA Prediction Guide">
+<h2 class="title tc">HW Question 1: Predicting PGA</h2>
+<p class="sub tc">Northridge Earthquake (Mw = 6.7, Jan 17, 1994)</p>
+<div class="card">
+<h3>Background</h3>
+<p>Fault type: <strong>dip-slip (thrust/reverse)</strong> on a previously unknown fault. You have 8 rock stations with recorded PGA values (geometric mean of two horizontal components).</p>
+</div>
+<div class="card">
+<h3>Station Data (Table 1)</h3>
+<table>
+<thead><tr><th>Station</th><th>R_rup (km)</th><th>PGA1 (g)</th><th>PGA2 (g)</th><th>Geo Mean (g)</th></tr></thead>
+<tbody>
+<tr><td>Pacoima Dam</td><td>9.3</td><td>0.434</td><td>0.415</td><td>0.424</td></tr>
+<tr><td>Topanga</td><td>23.6</td><td>0.266</td><td>0.364</td><td>0.311</td></tr>
+<tr><td>Lake Hughes #4</td><td>32.3</td><td>0.084</td><td>0.057</td><td>0.069</td></tr>
+<tr><td>Lake Hughes #9</td><td>28.4</td><td>0.217</td><td>0.165</td><td>0.189</td></tr>
+<tr><td>Mt. Wilson</td><td>36.9</td><td>0.234</td><td>0.134</td><td>0.177</td></tr>
+<tr><td>Rolling Hills</td><td>46.6</td><td>0.116</td><td>0.106</td><td>0.111</td></tr>
+<tr><td>Rancho PV</td><td>55.2</td><td>0.072</td><td>0.054</td><td>0.062</td></tr>
+<tr><td>Burbank</td><td>20.0</td><td>0.163</td><td>0.120</td><td>0.140</td></tr>
+</tbody>
+</table>
+<p class="sm">*R_rup = closest distance to fault rupture plane. Geo Mean = √(PGA1 × PGA2)</p>
+</div>
+<div class="card tip">
+<h3>Key Steps for Q1</h3>
+<ol style="list-style:decimal;padding-left:1.5rem">
+<li>Estimate R_JB for each station (needed for Boore et al. 1997)</li>
+<li>Use each GMPE to predict PGA at each station</li>
+<li>Compare with recorded geometric mean PGA</li>
+<li>Create a table and a plot (distance vs PGA)</li>
+<li>Discuss which predictions were good/bad and why</li>
+</ol>
+</div>
+</section>
+
+<!-- ============== SLIDE 18: HW Q2 GUIDE ============== -->
+<section class="slide" data-title="HW Q2: Response Spectra Guide">
+<h2 class="title tc">HW Question 2: Response Spectra</h2>
+<p class="sub tc">Pacoima Dam & Mt. Wilson Stations</p>
+<div class="card">
+<h3>What To Do</h3>
+<p>Predict full acceleration response spectra at 2 rock sites using 3 GMPE approaches:</p>
+<ol style="list-style:decimal;padding-left:1.5rem">
+<li>Abrahamson & Silva (1997)</li>
+<li>Abrahamson & Silva (2008)</li>
+<li>NGA West 2 (set equal weights for all methods)</li>
+</ol>
+</div>
+<div class="card formula">
+<h3>Input Parameters for A&S 2008 and NGA West 2</h3>
+<div class="info-row"><span class="info-label">Vs30</span><span class="info-val">760 m/s</span></div>
+<div class="info-row"><span class="info-label">W (fault width)</span><span class="info-val">20 km</span></div>
+<div class="info-row"><span class="info-label">Z_tor (depth to top of rupture)</span><span class="info-val">5 km</span></div>
+<div class="info-row"><span class="info-label">Dip angle (δ)</span><span class="info-val">40°</span></div>
+<div class="info-row"><span class="info-label">Z1.0</span><span class="info-val">34 m</span></div>
+<div class="info-row"><span class="info-label">Rake angle (λ)</span><span class="info-val">100° (from Wald et al., BSSA Vol. 86)</span></div>
+</div>
+<div class="card tip">
+<h3>Output Requirements</h3>
+<ul>
+<li>Plot predicted RS on <strong>semi-log scale</strong></li>
+<li>Compare with <strong>recorded RS</strong> from file "RS_PacD&MtWil.xls"</li>
+<li>Comment on similarities and discrepancies</li>
+<li>Provide a summary table of input values</li>
+</ul>
+</div>
+</section>
+
+<!-- ============== SLIDE 19: HW Q3 GUIDE ============== -->
+<section class="slide" data-title="HW Q3: NGA West vs East">
+<h2 class="title tc">HW Question 3: West vs East</h2>
+<p class="sub tc">NGA West 2 (San Andreas) vs NGA East (New Madrid)</p>
+<div class="card">
+<h3>Setup</h3>
+<p>For Mw = 8.0 on the <strong>San Andreas fault (strike-slip)</strong>: use NGA West 2 GMPEs.</p>
+<p>For Mw = 8.0 in the <strong>New Madrid Seismic Zone</strong>: use NGA East Spreadsheet.</p>
+<p class="mt">Predict response spectra at <strong>2 rock sites each</strong>: 10 km and 100 km from the fault.</p>
+</div>
+<div class="g2">
+<div class="card">
+<h4>Active Tectonic Region (West)</h4>
+<ul>
+<li>Shallow crustal earthquakes</li>
+<li>Well-studied (lots of data)</li>
+<li>Higher attenuation rate</li>
+<li>Tool: NGA West 2 spreadsheet</li>
+</ul>
+</div>
+<div class="card">
+<h4>Stable Tectonic Region (East/Central)</h4>
+<ul>
+<li>Intraplate earthquakes</li>
+<li>Much less recorded data → higher uncertainty</li>
+<li><strong>Lower attenuation</strong> → energy travels further!</li>
+<li>Tool: NGA East spreadsheet</li>
+</ul>
+</div>
+</div>
+<div class="card warn">
+<h3>⚠️ Important Note</h3>
+<p>These predictions are for <strong>"rock" ground motions</strong> and do NOT reflect the amplification/deamplification caused by overlying soil, which can be significantly thick in the Mississippi Embayment of the New Madrid Seismic Zone. Soil site response will be covered in the next lecture.</p>
+</div>
+</section>
+
+<!-- ============== SLIDE 20: FINAL REVIEW ============== -->
+<section class="slide" data-title="Final Review & Summary">
+<h2 class="title tc">📝 Final Review</h2>
+<p class="sub tc">Test Your Knowledge</p>
+<div class="card tc">
+<h4>Q1: What three things do geotech EQ engineers predict?</h4>
+<div class="quiz-opts">
+<button class="qbtn" onclick="quiz(this,true,'q4')">Intensity, Frequency Content, Duration</button>
+<button class="qbtn" onclick="quiz(this,false,'q4')">Magnitude, Depth, Distance</button>
+</div><div class="qfb" id="fb-q4"></div>
+</div>
+<div class="card tc">
+<h4>Q2: In the frequency domain, D = ?</h4>
+<div class="quiz-opts">
+<button class="qbtn" onclick="quiz(this,false,'q5')">A × ω²</button>
+<button class="qbtn" onclick="quiz(this,true,'q5')">A / ω²</button>
+<button class="qbtn" onclick="quiz(this,false,'q5')">A / ω</button>
+</div><div class="qfb" id="fb-q5"></div>
+</div>
+<div class="card tc">
+<h4>Q3: Forward directivity produces motion primarily in which direction?</h4>
+<div class="quiz-opts">
+<button class="qbtn" onclick="quiz(this,false,'q6')">Fault-parallel</button>
+<button class="qbtn" onclick="quiz(this,true,'q6')">Fault-normal</button>
+<button class="qbtn" onclick="quiz(this,false,'q6')">Vertical</button>
+</div><div class="qfb" id="fb-q6"></div>
+</div>
+<div class="card tc">
+<h4>Q4: Which tectonic region has LOWER attenuation (energy travels further)?</h4>
+<div class="quiz-opts">
+<button class="qbtn" onclick="quiz(this,false,'q7')">Active (Western US)</button>
+<button class="qbtn" onclick="quiz(this,true,'q7')">Stable (Central/Eastern US)</button>
+</div><div class="qfb" id="fb-q7"></div>
+</div>
+<div class="card tc">
+<h4>Q5: What is the topographic amplification formula by Ashford et al. (1997)?</h4>
+<div class="quiz-opts">
+<button class="qbtn" onclick="quiz(this,false,'q8')">ft0 = Height / (5 × Vs_avg)</button>
+<button class="qbtn" onclick="quiz(this,true,'q8')">ft0 = Vs_avg / (5 × Height)</button>
+</div><div class="qfb" id="fb-q8"></div>
+</div>
+<div class="card tip tc mt">
+<h3>🎉 You're Ready!</h3>
+<p>You've covered all the core concepts from the lecture. Now go tackle Homework #3 with confidence!</p>
+</div>
+</section>
+
+</main>
+</div>
+
+<!-- NAV BAR -->
+<nav class="nav-bar">
+<button class="btn bs" id="bP" disabled>◀ Prev</button>
+<span class="snum" id="sNum">1/20</span>
+<button class="btn bp" id="bN">Next ▶</button>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+Geotechnical Earthquake Engineering 
+ 
+Assignment #3 – Predicting Rock Ground Motions (GMPE/Attenuation Relationships) 
+ 
+Your answers to these questions should be reported in a memorandum format (i.e. a short, typed report 
+detailing your answers as clearly and concisely as possible). Use text to state assumptions and answer 
+questions where appropriate. However, the information will most effectively be conveyed by citing tables 
+and figures placed within the text. A plethora of useful information (journal articles for select attenuation 
+relationships, the Virgina Tech GMPE report by Russell Green with associated Matlab scripts and Excel 
+files, NGA West, East, and subduction spreadsheets, etc.) for this assignment may be found on 
+blackboard: 
+ 
+ 
+Background Information for Questions 1 and 2 
+Southern California was strongly shaken by the Northridge earthquake (Mw = 6.7) on January 17, 
+1994. The fault rupture was primarily dip-slip, along a previously unknown thrust fault. The surface 
+projection of the approximate fault rupture plane, is shown in Figure 1. Additionally, this figure shows the 
+locations of strong motion stations in the Los Angeles metropolitan area (listed in Table 1). Answer 
+Questions 1 and 2 below.  
+ 
+1. 
+Predict the maximum horizontal ground acceleration (geometric mean of the horizontal 
+components) at the strong motion stations listed in Table 1 and indicated in Figure 1 (all are rock 
+sites). Use the Abrahamson and Silva (1997), Idriss (2008), and Boore et al. (1997) attenuation 
+relationships. Only calculate the median ground motions (i.e., do not consider the standard error 
+terms at this time). How well do the predictions compare with the ground motions recorded at 
+these sites during the 1994 Northridge earthquake? Which predictions were good or bad and what 
+might be the cause for the observed results? 
+ 
+Recorded PGA for each station is provided in Table 1 along with the closest distance to the fault 
+rupture plane distance. You will need to estimate the Joyner-Boore distance for use in the Boore, 
+Joyner and Fumal 1997 relationship. 
+ 
+Please express your results in a table which includes all strong motion stations and values for 
+rupture distance, Joyner-Boore distance, recorded PGAs, and predicted PGA from each 
+relationship. Also, include a plot of distance versus predicted/measured PGA for comparison 
+along with other comparison plots, errors, etc which may be useful to explain the results.  
+ 
+2. 
+For the Pacoima Dam and Mt. Wilson stations, use the Abrahamson and Silva (1997), the 
+Abrahamson and Silva (2008), and NGA_West 2 (set weights equal for all methods) attenuation 
+relationships to predict the full acceleration response spectrum at these rock sites. Assume the 
+following for Abrahamson and Silva (2008) and NGA_West 2: Vs30 = 760 m/s, W = 20 km, Ztor 
+= 5 km, dip angle (δ) = 40 deg., Z1.0= 34 m and rake angle (λ) = 100 degrees (from Wald et al., 
+BSSA Vol. 86). All other values can be obtained from the information provided in this 
+assignment, the journal article, or use default values. The actual response spectra obtained from 
+the recorded ground motions for these two sites are presented in Figure 2. How do the measured 
+response spectra compare with those predicted from the three GMPE approaches? Comment on 
+similarities and discrepancies. What are possible causes for any discrepancies? Please provide a 
+summary table of input values. 
+ 
+Note: I have prepared an Excel file titled “RS_PacD&MtWil.xls” that contains the response 
+spectra obtained from the recorded ground motions at the Pacoima Dam and Mt. Wilson stations. 
+It may be found in the folder noted above. You may use this information, for comparison 
+purposes, to plot the measured and predicted RS at each site in the same figure. Use a semi-log 
+plot format. 
+ 
+ 
+Table 1 
+Record 
+Distance  
+(km)* 
+PGA1  
+(g) 
+PGA2  
+(g) 
+Pacoima Dam Downstream 
+9.3 
+0.434 
+0.415 
+Topanga 
+23.6 
+0.266 
+0.364 
+Lake Hughes #4 
+32.3 
+0.084 
+0.057 
+Lake Hughes #9 
+28.4 
+0.217 
+0.165 
+Mt. Wilson 
+36.9 
+0.234 
+0.134 
+Rolling Hills Estates 
+46.6 
+0.116 
+0.106 
+Rancho Palos Verdes 
+55.2 
+0.072 
+0.054 
+Burbank 
+20.0 
+0.163 
+0.120 
+*Closest distance to the fault rupture plane. 
+ 
+ 
+ 
+Background Information for Question 3 
+The next generation attenuation (NGA) relationships documented in the February 2008 edition of 
+Earthquake Spectra (Vol. 24) are for shallow crustal earthquakes in active tectonic regions (i.e., tectonic 
+environments similar to California). The NGA East attenuation relationships used in central and eastern 
+North America (i.e., intraplate earthquakes or stable tectonic regions) are for stable tectonic regions. 
+However, there is more uncertainty regarding ground motion predictions in these areas due to the shortage 
+of recorded data from significant earthquakes in the central and eastern U.S. It is interesting to compare 
+the ground motions predicted in the western U.S. versus ground motions predicted in the central U.S. 
+Answer Question 3 below. 
+ 
+3. 
+For a Mw = 8.0 earthquake on the San Andreas fault (strike-slip), use the NGA_West 2 GMPEs to 
+predict the acceleration response spectra for two rock sites: one located 10 km from the fault and 
+one located 100 km from the fault. Assume default values for all unknowns.  For a Mw = 8.0 
+earthquake in the New Madrid Seismic Zone, use the NGA_East Spreadsheet to predict the 
+acceleration response spectra for two rock sites: one located 10 km from the fault and one located 
+100 km from the fault. Compare and contrast the response spectra for the sites located 10 km 
+away from the San Andreas and New Madrid faults, respectively (i.e., plot them together). 
+Compare and contrast the response spectra for the sites located 100 km away from the San 
+Andreas and New Madrid faults, respectively (i.e., plot them together).  
+ 
+Note: The predictions you just made are for “rock” ground motions and do not reflect the 
+amplification/deamplification of ground motions caused by the overlying soil, which can be 
+significantly thick in the Mississippi Embayment of the New Madrid Seismic Zone. We will 
+address soil considerations next. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
