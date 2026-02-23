@@ -102,3 +102,10 @@ details{margin:.5rem 0}
 summary{cursor:pointer;color:var(--primary2);font-weight:600;padding:.5rem 0;font-size:.95rem}
 summary:hover{color:var(--accent)}
 details[open] summary{margin-bottom:.5rem}
+
+/* Utility Classes for CSP Compliance */
+.list-disc { list-style: disc !important; padding-left: 1.5rem !important; }
+.list-decimal { list-style: decimal !important; padding-left: 1.5rem !important; }
+.flex-center-wrap { display: flex !important; gap: .5rem !important; justify-content: center !important; flex-wrap: wrap !important; }
+.text-green { color: var(--green) !important; }
+.text-red { color: var(--red) !important; }

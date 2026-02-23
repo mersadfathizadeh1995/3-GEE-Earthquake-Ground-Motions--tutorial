@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; object-src 'none'; base-uri 'self';">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Earthquake Ground Motions — Complete Learning Module</title>
@@ -85,9 +86,9 @@
 <h4>🧠 Quick Check</h4>
 <p>Why do high frequencies attenuate faster than low frequencies?</p>
 <div class="quiz-opts">
-<button class="qbtn" onclick="quiz(this,false,'q1')">Because high frequencies have longer wavelengths</button>
-<button class="qbtn" onclick="quiz(this,true,'q1')">Because the earth acts as a low-pass filter — shorter wavelengths scatter and absorb more easily</button>
-<button class="qbtn" onclick="quiz(this,false,'q1')">Because surface waves travel faster</button>
+<button class="qbtn" data-quiz-correct="false" data-quiz-id="q1">Because high frequencies have longer wavelengths</button>
+<button class="qbtn" data-quiz-correct="true" data-quiz-id="q1">Because the earth acts as a low-pass filter — shorter wavelengths scatter and absorb more easily</button>
+<button class="qbtn" data-quiz-correct="false" data-quiz-id="q1">Because surface waves travel faster</button>
 </div>
 <div class="qfb" id="fb-q1"></div>
 </div>
@@ -203,7 +204,7 @@
 <li><strong>Instrument response:</strong> calibration factors; must account for building response if sensor is in a building</li>
 <li><strong>Ambient noise:</strong> filtering out background noise</li>
 <li><strong>Baseline correction:</strong>
-  <ul style="list-style:disc;padding-left:1.5rem">
+  <ul class="list-disc">
     <li><em>Time domain:</em> fit a function to the acceleration record and subtract</li>
     <li><em>Frequency domain:</em> apply high-pass filter above ~0.1 Hz</li>
   </ul>
@@ -215,9 +216,9 @@
 <h4>🧠 Quick Check</h4>
 <p>Why is Arias Intensity often preferred over PGA for assessing liquefaction potential?</p>
 <div class="quiz-opts">
-<button class="qbtn" onclick="quiz(this,false,'q2')">Because Ia is always larger than PGA</button>
-<button class="qbtn" onclick="quiz(this,true,'q2')">Because Ia accounts for ALL cycles of motion (amplitude + duration), not just the single peak</button>
-<button class="qbtn" onclick="quiz(this,false,'q2')">Because Ia ignores low-frequency components</button>
+<button class="qbtn" data-quiz-correct="false" data-quiz-id="q2">Because Ia is always larger than PGA</button>
+<button class="qbtn" data-quiz-correct="true" data-quiz-id="q2">Because Ia accounts for ALL cycles of motion (amplitude + duration), not just the single peak</button>
+<button class="qbtn" data-quiz-correct="false" data-quiz-id="q2">Because Ia ignores low-frequency components</button>
 </div>
 <div class="qfb" id="fb-q2"></div>
 </div>
@@ -282,10 +283,10 @@
 <div class="card tc">
 <h3>Interactive Response Spectrum</h3>
 <div class="chart-box"><canvas id="rsChart"></canvas></div>
-<div style="display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap">
-<button class="btn bs" onclick="setRS('rock')">🪨 Rock Site</button>
-<button class="btn bs" onclick="setRS('soil')">🟤 Soil Site</button>
-<button class="btn bs" onclick="setRS('both')">📊 Compare Both</button>
+<div class="flex-center-wrap">
+<button class="btn bs" data-rs-mode="rock">🪨 Rock Site</button>
+<button class="btn bs" data-rs-mode="soil">🟤 Soil Site</button>
+<button class="btn bs" data-rs-mode="both">📊 Compare Both</button>
 </div>
 </div>
 </section>
@@ -325,9 +326,9 @@
 <h4>🧠 Quick Check</h4>
 <p>A site 200 km from a M5.0 earthquake records PGA = 0.02g. What is the bracketed duration (threshold = 0.05g)?</p>
 <div class="quiz-opts">
-<button class="qbtn" onclick="quiz(this,true,'q3')">0 seconds — it never exceeds the 0.05g threshold</button>
-<button class="qbtn" onclick="quiz(this,false,'q3')">About 5 seconds</button>
-<button class="qbtn" onclick="quiz(this,false,'q3')">Cannot be determined</button>
+<button class="qbtn" data-quiz-correct="true" data-quiz-id="q3">0 seconds — it never exceeds the 0.05g threshold</button>
+<button class="qbtn" data-quiz-correct="false" data-quiz-id="q3">About 5 seconds</button>
+<button class="qbtn" data-quiz-correct="false" data-quiz-id="q3">Cannot be determined</button>
 </div>
 <div class="qfb" id="fb-q3"></div>
 </div>
@@ -367,7 +368,7 @@
 <div class="card">
 <h3>When Does Forward Directivity Occur?</h3>
 <p><strong>Two conditions</strong> must be met simultaneously:</p>
-<ol style="list-style:decimal;padding-left:1.5rem">
+<ol class="list-decimal">
 <li>The rupture front propagates <strong>toward the site</strong></li>
 <li>The direction of slip on the fault is <strong>aligned with the site</strong></li>
 </ol>
@@ -611,7 +612,7 @@
 </div>
 <div class="card tip">
 <h3>Key Steps for Q1</h3>
-<ol style="list-style:decimal;padding-left:1.5rem">
+<ol class="list-decimal">
 <li>Estimate R_JB for each station (needed for Boore et al. 1997)</li>
 <li>Use each GMPE to predict PGA at each station</li>
 <li>Compare with recorded geometric mean PGA</li>
@@ -628,7 +629,7 @@
 <div class="card">
 <h3>What To Do</h3>
 <p>Predict full acceleration response spectra at 2 rock sites using 3 GMPE approaches:</p>
-<ol style="list-style:decimal;padding-left:1.5rem">
+<ol class="list-decimal">
 <li>Abrahamson & Silva (1997)</li>
 <li>Abrahamson & Silva (2008)</li>
 <li>NGA West 2 (set equal weights for all methods)</li>
@@ -697,38 +698,38 @@
 <div class="card tc">
 <h4>Q1: What three things do geotech EQ engineers predict?</h4>
 <div class="quiz-opts">
-<button class="qbtn" onclick="quiz(this,true,'q4')">Intensity, Frequency Content, Duration</button>
-<button class="qbtn" onclick="quiz(this,false,'q4')">Magnitude, Depth, Distance</button>
+<button class="qbtn" data-quiz-correct="true" data-quiz-id="q4">Intensity, Frequency Content, Duration</button>
+<button class="qbtn" data-quiz-correct="false" data-quiz-id="q4">Magnitude, Depth, Distance</button>
 </div><div class="qfb" id="fb-q4"></div>
 </div>
 <div class="card tc">
 <h4>Q2: In the frequency domain, D = ?</h4>
 <div class="quiz-opts">
-<button class="qbtn" onclick="quiz(this,false,'q5')">A × ω²</button>
-<button class="qbtn" onclick="quiz(this,true,'q5')">A / ω²</button>
-<button class="qbtn" onclick="quiz(this,false,'q5')">A / ω</button>
+<button class="qbtn" data-quiz-correct="false" data-quiz-id="q5">A × ω²</button>
+<button class="qbtn" data-quiz-correct="true" data-quiz-id="q5">A / ω²</button>
+<button class="qbtn" data-quiz-correct="false" data-quiz-id="q5">A / ω</button>
 </div><div class="qfb" id="fb-q5"></div>
 </div>
 <div class="card tc">
 <h4>Q3: Forward directivity produces motion primarily in which direction?</h4>
 <div class="quiz-opts">
-<button class="qbtn" onclick="quiz(this,false,'q6')">Fault-parallel</button>
-<button class="qbtn" onclick="quiz(this,true,'q6')">Fault-normal</button>
-<button class="qbtn" onclick="quiz(this,false,'q6')">Vertical</button>
+<button class="qbtn" data-quiz-correct="false" data-quiz-id="q6">Fault-parallel</button>
+<button class="qbtn" data-quiz-correct="true" data-quiz-id="q6">Fault-normal</button>
+<button class="qbtn" data-quiz-correct="false" data-quiz-id="q6">Vertical</button>
 </div><div class="qfb" id="fb-q6"></div>
 </div>
 <div class="card tc">
 <h4>Q4: Which tectonic region has LOWER attenuation (energy travels further)?</h4>
 <div class="quiz-opts">
-<button class="qbtn" onclick="quiz(this,false,'q7')">Active (Western US)</button>
-<button class="qbtn" onclick="quiz(this,true,'q7')">Stable (Central/Eastern US)</button>
+<button class="qbtn" data-quiz-correct="false" data-quiz-id="q7">Active (Western US)</button>
+<button class="qbtn" data-quiz-correct="true" data-quiz-id="q7">Stable (Central/Eastern US)</button>
 </div><div class="qfb" id="fb-q7"></div>
 </div>
 <div class="card tc">
 <h4>Q5: What is the topographic amplification formula by Ashford et al. (1997)?</h4>
 <div class="quiz-opts">
-<button class="qbtn" onclick="quiz(this,false,'q8')">ft0 = Height / (5 × Vs_avg)</button>
-<button class="qbtn" onclick="quiz(this,true,'q8')">ft0 = Vs_avg / (5 × Height)</button>
+<button class="qbtn" data-quiz-correct="false" data-quiz-id="q8">ft0 = Height / (5 × Vs_avg)</button>
+<button class="qbtn" data-quiz-correct="true" data-quiz-id="q8">ft0 = Vs_avg / (5 × Height)</button>
 </div><div class="qfb" id="fb-q8"></div>
 </div>
 <div class="card tip tc mt">
