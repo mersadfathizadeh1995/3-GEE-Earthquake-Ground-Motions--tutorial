@@ -23,6 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     tocBtn.addEventListener('click', () => sidebar.classList.toggle('open'));
 
+    // Global Event Delegation for Quiz and Charts
+    document.addEventListener('click', e => {
+        const qbtn = e.target.closest('.qbtn');
+        if (qbtn) {
+            const correct = qbtn.dataset.quizCorrect === 'true';
+            const id = qbtn.dataset.quizId;
+            quiz(qbtn, correct, id);
+        }
+
+        const rsBtn = e.target.closest('.btn.bs[data-rs-mode]');
+        if (rsBtn) {
+            const mode = rsBtn.dataset.rsMode;
+            setRS(mode);
+        }
+    });
+
     function goTo(n) {
         if (n < 0 || n >= total) return;
         slides[cur].classList.remove('active');
@@ -143,10 +159,10 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.parentElement.querySelectorAll('.qbtn').forEach(b => b.classList.remove('ok', 'no'));
         if (correct) {
             btn.classList.add('ok');
-            fb.innerHTML = '<span style="color:var(--green)">✓ ' + (answers[id] || 'Correct!') + '</span>';
+            fb.innerHTML = '<span class="text-green">✓ ' + (answers[id] || 'Correct!') + '</span>';
         } else {
             btn.classList.add('no');
-            fb.innerHTML = '<span style="color:var(--red)">✗ Try again!</span>';
+            fb.innerHTML = '<span class="text-red">✗ Try again!</span>';
         }
     };
 
