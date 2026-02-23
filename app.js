@@ -52,12 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Init charts lazily
-        if (slides[cur].id === '' || true) {
-            const rsCanvas = slides[cur].querySelector('#rsChart');
-            if (rsCanvas && !rsCanvas._done) { initRS(rsCanvas); rsCanvas._done = true; }
-            const rotdCanvas = slides[cur].querySelector('#rotdChart');
-            if (rotdCanvas && !rotdCanvas._done) { initRotD(rotdCanvas); rotdCanvas._done = true; }
-        }
+        const rsCanvas = slides[cur].querySelector('#rsChart');
+        if (rsCanvas && !rsCanvas._done) { initRS(rsCanvas); rsCanvas._done = true; }
+        const rotdCanvas = slides[cur].querySelector('#rotdChart');
+        if (rotdCanvas && !rotdCanvas._done) { initRotD(rotdCanvas); rotdCanvas._done = true; }
     }
 
     // Response Spectrum Chart
