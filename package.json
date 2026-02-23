@@ -1,0 +1,16 @@
+{
+  "name": "earthquake-ground-motions-tutorial",
+  "version": "1.0.0",
+  "description": "Earthquake Ground Motions Learning Module",
+  "main": "app.js",
+  "scripts": {
+    "test": "node --test quiz.test.js"
+  },
+  "keywords": [
+    "earthquake",
+    "ground-motion",
+    "tutorial"
+  ],
+  "author": "",
+  "license": "ISC"
+}
